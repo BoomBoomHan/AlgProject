@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -22,9 +23,35 @@ public partial class Lab_Fib : Form
 
 	}
 
-	private static int Fib_Recursion(int n, out bool except)
+	class FibHelper
 	{
-		except = false;
+		public int N;
+		public bool Success;
+		
+		public FibHelper(int n)
+		{
+			N = n;
+			Success = true;
+		}
+	}
+
+	class FibObject
+	{
+		public FibHelper Helper;
+		public int Result;
+
+		public FibObject(FibHelper helper)
+		{
+			Helper = helper;
+			Result = -1;
+		}
+	}
+
+	private delegate void FibFunction(FibHelper fibHelper);
+
+	private static async Task<int> Fib_RecursionAsync(FibHelper fibHelper)
+	{
+		int n = fibHelper.N;
 		if (n < 0)
 		{
 			throw new ArgumentException("您所输入的n是负数，请核对后再输。");
@@ -34,19 +61,20 @@ public partial class Lab_Fib : Form
 		{
 			return n;
 		}
-
-		long result = Fib_Recursion(n - 1, out except) + Fib_Recursion(n - 2, out except);
-		if (result > int.MaxValue)
+		var last1 = Fib_RecursionAsync(new FibHelper(n - 1));
+		var last2 = Fib_RecursionAsync(new FibHelper(n - 2));
+		int result = last1.Result + last2.Result;
+		if (result < 0)
 		{
-			except = true;
+			fibHelper.Success = false;
 			return -1;
 		}
-		return (int)result;
+		return result;
 	}
 
-	private static int Fib_Iteration(int n, out bool except)
+	private static async Task<int> Fib_IterationAsync(FibHelper fibHelper)
 	{
-		except = false;
+		int n = fibHelper.N;
 		if (n < 0)
 		{
 			throw new ArgumentException("您所输入的n是负数，请核对后再输。");
@@ -66,13 +94,35 @@ public partial class Lab_Fib : Form
 			int result = last + fibQueue.Peek();
 			if (result < 0)
 			{
-				except = true;
+				fibHelper.Success = false;
 				return -1;
 			}
 			fibQueue.Enqueue(result);
 		}
 
 		return fibQueue.Last();
+
+		//FibObject obj = new FibObject(fibHelper);
+
+		/*ParameterizedThreadStart start = new ParameterizedThreadStart(obj =>
+		{
+			Queue<int> fibQueue = new Queue<int>(3);
+			fibQueue.Enqueue(0);
+			fibQueue.Enqueue(1);
+			for (int i = 2; i <= n; i++)
+			{
+				int last = fibQueue.Dequeue();
+				int result = last + fibQueue.Peek();
+				if (result < 0)
+				{
+					fibHelper.Success = false;
+					return;
+				}
+				fibQueue.Enqueue(result);
+			}
+
+			(obj as FibObject).Result = fibQueue.Last();
+		});*/
 	}
 
 	private void NumberInput_KeyPress(object sender, KeyPressEventArgs e)
@@ -87,31 +137,44 @@ public partial class Lab_Fib : Form
 		}
 	}
 
-	private void IterationButton_Click(object sender, EventArgs e)
+	private void SetTipVisibility(bool visibility)
 	{
-		int n = int.Parse(NumberInput.Text);
-		int result = Fib_Iteration(n, out bool except);
-		if (except)
-		{
-			MessageBox.Show("您所输入的数已经变鬼。", "警告警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
-		}
-		else
-		{
-			MessageBox.Show($"Fib({n})的结果是{result}。", "迭代运算结果", MessageBoxButtons.OK, MessageBoxIcon.Information);
-		}
+		Tip.Visible = visibility;
+		Refresh();
 	}
 
-	private void RecursionButton_Click(object sender, EventArgs e)
+	private async void RecursionButton_Click(object sender, EventArgs e)
 	{
 		int n = int.Parse(NumberInput.Text);
-		int result = Fib_Recursion(n, out bool except);
-		if (except)
+		FibHelper helper = new FibHelper(n);
+		SetTipVisibility(true);
+		var result = await Fib_RecursionAsync(helper);
+		SetTipVisibility(false);
+		if (!helper.Success)
 		{
 			MessageBox.Show("您所输入的数已经变鬼。", "警告警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
 		}
 		else
 		{
 			MessageBox.Show($"Fib({n})的结果是{result}。", "递归运算结果", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
+	}
+
+	private async void IterationButton_Click(object sender, EventArgs e)
+	{
+		int n = int.Parse(NumberInput.Text);
+		FibHelper helper = new FibHelper(n);
+		SetTipVisibility(true);
+		int result = await Fib_IterationAsync(helper);
+		SetTipVisibility(false);
+		if (!helper.Success)
+		{
+			MessageBox.Show("您所输入的数已经变鬼。", "警告警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
+		}
+		else
+		{
+			MessageBox.Show($"Fib({n})的结果是{result}。", "迭代运算结果", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 	}
 
