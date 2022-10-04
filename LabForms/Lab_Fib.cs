@@ -35,7 +35,7 @@ public partial class Lab_Fib : Form
 		}
 	}
 
-	class FibObject
+	/*class FibObject
 	{
 		public FibHelper Helper;
 		public int Result;
@@ -45,10 +45,11 @@ public partial class Lab_Fib : Form
 			Helper = helper;
 			Result = -1;
 		}
-	}
+	}*/
 
 	private delegate void FibFunction(FibHelper fibHelper);
 
+	//使用异步主要为了使Fib(n-1)和Fib(n-2)同时运算，以相对节省时间。实际测试时发现，异步比同步用时减少50%。
 	private static async Task<int> Fib_RecursionAsync(FibHelper fibHelper)
 	{
 		int n = fibHelper.N;
@@ -63,6 +64,8 @@ public partial class Lab_Fib : Form
 		}
 		var last1 = Fib_RecursionAsync(new FibHelper(n - 1));
 		var last2 = Fib_RecursionAsync(new FibHelper(n - 2));
+		await last1;
+		await last2;
 		int result = last1.Result + last2.Result;
 		if (result < 0)
 		{
@@ -72,7 +75,7 @@ public partial class Lab_Fib : Form
 		return result;
 	}
 
-	private static async Task<int> Fib_IterationAsync(FibHelper fibHelper)
+	private static int Fib_Iteration(FibHelper fibHelper)
 	{
 		int n = fibHelper.N;
 		if (n < 0)
@@ -85,7 +88,7 @@ public partial class Lab_Fib : Form
 			return n;
 		}
 
-		Queue<int> fibQueue = new Queue<int>(3);
+		Queue<int> fibQueue = new Queue<int>(2);
 		fibQueue.Enqueue(0);
 		fibQueue.Enqueue(1);
 		for (int i = 2; i <= n; i++)
@@ -158,15 +161,14 @@ public partial class Lab_Fib : Form
 		{
 			MessageBox.Show($"Fib({n})的结果是{result}。", "递归运算结果", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
-
 	}
 
-	private async void IterationButton_Click(object sender, EventArgs e)
+	private void IterationButton_Click(object sender, EventArgs e)
 	{
 		int n = int.Parse(NumberInput.Text);
 		FibHelper helper = new FibHelper(n);
 		SetTipVisibility(true);
-		int result = await Fib_IterationAsync(helper);
+		int result = Fib_Iteration(helper);
 		SetTipVisibility(false);
 		if (!helper.Success)
 		{
