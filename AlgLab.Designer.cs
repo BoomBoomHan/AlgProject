@@ -34,8 +34,8 @@
 			this.Btn6 = new System.Windows.Forms.Button();
 			this.Btn5 = new System.Windows.Forms.Button();
 			this.Btn4 = new System.Windows.Forms.Button();
-			this.Btn3 = new System.Windows.Forms.Button();
-			this.Btn2 = new System.Windows.Forms.Button();
+			this.Entrance_Sorting = new System.Windows.Forms.Button();
+			this.Entrance_Backpack = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// Entrance_Fib
@@ -53,12 +53,12 @@
 			// Title
 			// 
 			this.Title.AutoSize = true;
-			this.Title.Font = new System.Drawing.Font("宋体", 20F);
+			this.Title.Font = new System.Drawing.Font("楷体", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 			this.Title.Location = new System.Drawing.Point(47, 47);
 			this.Title.Name = "Title";
-			this.Title.Size = new System.Drawing.Size(357, 40);
+			this.Title.Size = new System.Drawing.Size(287, 33);
 			this.Title.TabIndex = 1;
-			this.Title.Text = "杨波 老师，您好！";
+			this.Title.Text = "杨波老师，您好！";
 			// 
 			// Btn6
 			// 
@@ -91,38 +91,40 @@
 			this.Btn4.Name = "Btn4";
 			this.Btn4.Size = new System.Drawing.Size(276, 98);
 			this.Btn4.TabIndex = 5;
-			this.Btn4.Text = "22=35";
+			this.Btn4.Text = "买瓜";
 			this.Btn4.UseVisualStyleBackColor = true;
 			// 
-			// Btn3
+			// Entrance_Sorting
 			// 
-			this.Btn3.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.Btn3.Location = new System.Drawing.Point(50, 240);
-			this.Btn3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-			this.Btn3.Name = "Btn3";
-			this.Btn3.Size = new System.Drawing.Size(276, 98);
-			this.Btn3.TabIndex = 6;
-			this.Btn3.Text = "买瓜.exe";
-			this.Btn3.UseVisualStyleBackColor = true;
+			this.Entrance_Sorting.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.Entrance_Sorting.Location = new System.Drawing.Point(50, 240);
+			this.Entrance_Sorting.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+			this.Entrance_Sorting.Name = "Entrance_Sorting";
+			this.Entrance_Sorting.Size = new System.Drawing.Size(276, 98);
+			this.Entrance_Sorting.TabIndex = 6;
+			this.Entrance_Sorting.Text = "检索与排序";
+			this.Entrance_Sorting.UseVisualStyleBackColor = true;
+			this.Entrance_Sorting.Click += new System.EventHandler(this.Entrance_Sorting_Click);
 			// 
-			// Btn2
+			// Entrance_Backpack
 			// 
-			this.Btn2.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.Btn2.Location = new System.Drawing.Point(462, 120);
-			this.Btn2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-			this.Btn2.Name = "Btn2";
-			this.Btn2.Size = new System.Drawing.Size(276, 98);
-			this.Btn2.TabIndex = 7;
-			this.Btn2.Text = "二仙桥到成华大道";
-			this.Btn2.UseVisualStyleBackColor = true;
+			this.Entrance_Backpack.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.Entrance_Backpack.Location = new System.Drawing.Point(462, 120);
+			this.Entrance_Backpack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+			this.Entrance_Backpack.Name = "Entrance_Backpack";
+			this.Entrance_Backpack.Size = new System.Drawing.Size(276, 98);
+			this.Entrance_Backpack.TabIndex = 7;
+			this.Entrance_Backpack.Text = "背包问题";
+			this.Entrance_Backpack.UseVisualStyleBackColor = true;
+			this.Entrance_Backpack.Click += new System.EventHandler(this.Entrance_Backpack_Click);
 			// 
 			// AlgLab
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(798, 540);
-			this.Controls.Add(this.Btn2);
-			this.Controls.Add(this.Btn3);
+			this.Controls.Add(this.Entrance_Backpack);
+			this.Controls.Add(this.Entrance_Sorting);
 			this.Controls.Add(this.Btn4);
 			this.Controls.Add(this.Btn5);
 			this.Controls.Add(this.Btn6);
@@ -147,8 +149,8 @@
 		private System.Windows.Forms.Button Btn6;
 		private System.Windows.Forms.Button Btn5;
 		private System.Windows.Forms.Button Btn4;
-		private System.Windows.Forms.Button Btn3;
-		private System.Windows.Forms.Button Btn2;
+		private System.Windows.Forms.Button Entrance_Sorting;
+		private System.Windows.Forms.Button Entrance_Backpack;
 	}
 }
 
