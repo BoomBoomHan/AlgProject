@@ -42,7 +42,7 @@ namespace AlgProject
 			Entrance_Fib.Text = "A full commitments what I'm thinking of, You wouldn't get this from any other guy";
 			Entrance_Backpack.Text = "I just wanna tell you how I'm feeling, Gotta make you understand";
 			Entrance_Sorting.Text = "Never gonna give yu up, Never gonna let you down";
-			Btn4.Text = "Never gonna run around and desert you";
+			Entrance_Matrix.Text = "Never gonna run around and desert you";
 			Btn5.Text = "Never gonna make you cry, Never gonna say goodbye";
 			Btn6.Text = "Never gonna tell a lie and hurt you";
 		}
@@ -56,6 +56,12 @@ namespace AlgProject
 		private void Entrance_Sorting_Click(object sender, EventArgs e)
 		{
 			var form = new Lab_Sorting();
+			form.ShowDialog(this);
+		}
+
+		private void Entrance_Matrix_Click(object sender, EventArgs e)
+		{
+			var form = new Lab_Matrix();
 			form.ShowDialog(this);
 		}
 	}

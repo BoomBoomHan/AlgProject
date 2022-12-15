@@ -70,6 +70,7 @@
     <Compile Include="AlgLab.Designer.cs">
       <DependentUpon>AlgLab.cs</DependentUpon>
     </Compile>
+    <Compile Include="LabForms\ArraySortState.cs" />
     <Compile Include="LabForms\CsvHelper.cs" />
     <Compile Include="LabForms\Lab_Backpack.cs">
       <SubType>Form</SubType>
@@ -83,12 +84,19 @@
     <Compile Include="LabForms\Lab_Fib.Designer.cs">
       <DependentUpon>Lab_Fib.cs</DependentUpon>
     </Compile>
+    <Compile Include="LabForms\Lab_Matrix.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LabForms\Lab_Matrix.Designer.cs">
+      <DependentUpon>Lab_Matrix.cs</DependentUpon>
+    </Compile>
     <Compile Include="LabForms\Lab_Sorting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LabForms\Lab_Sorting.Designer.cs">
       <DependentUpon>Lab_Sorting.cs</DependentUpon>
     </Compile>
+    <Compile Include="LabForms\Matrix.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AlgLab.resx">
@@ -99,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LabForms\Lab_Fib.resx">
       <DependentUpon>Lab_Fib.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabForms\Lab_Matrix.resx">
+      <DependentUpon>Lab_Matrix.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LabForms\Lab_Sorting.resx">
       <DependentUpon>Lab_Sorting.cs</DependentUpon>

@@ -33,7 +33,7 @@
 			this.Title = new System.Windows.Forms.Label();
 			this.Btn6 = new System.Windows.Forms.Button();
 			this.Btn5 = new System.Windows.Forms.Button();
-			this.Btn4 = new System.Windows.Forms.Button();
+			this.Entrance_Matrix = new System.Windows.Forms.Button();
 			this.Entrance_Sorting = new System.Windows.Forms.Button();
 			this.Entrance_Backpack = new System.Windows.Forms.Button();
 			this.SuspendLayout();
@@ -56,7 +56,7 @@
 			this.Title.Font = new System.Drawing.Font("楷体", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 			this.Title.Location = new System.Drawing.Point(47, 47);
 			this.Title.Name = "Title";
-			this.Title.Size = new System.Drawing.Size(287, 33);
+			this.Title.Size = new System.Drawing.Size(337, 40);
 			this.Title.TabIndex = 1;
 			this.Title.Text = "杨波老师，您好！";
 			// 
@@ -83,16 +83,17 @@
 			this.Btn5.Text = "《算法分析与设计》从入门到挂科";
 			this.Btn5.UseVisualStyleBackColor = true;
 			// 
-			// Btn4
+			// Entrance_Matrix
 			// 
-			this.Btn4.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.Btn4.Location = new System.Drawing.Point(462, 240);
-			this.Btn4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-			this.Btn4.Name = "Btn4";
-			this.Btn4.Size = new System.Drawing.Size(276, 98);
-			this.Btn4.TabIndex = 5;
-			this.Btn4.Text = "买瓜";
-			this.Btn4.UseVisualStyleBackColor = true;
+			this.Entrance_Matrix.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+			this.Entrance_Matrix.Location = new System.Drawing.Point(462, 240);
+			this.Entrance_Matrix.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+			this.Entrance_Matrix.Name = "Entrance_Matrix";
+			this.Entrance_Matrix.Size = new System.Drawing.Size(276, 98);
+			this.Entrance_Matrix.TabIndex = 5;
+			this.Entrance_Matrix.Text = "矩阵乘法";
+			this.Entrance_Matrix.UseVisualStyleBackColor = true;
+			this.Entrance_Matrix.Click += new System.EventHandler(this.Entrance_Matrix_Click);
 			// 
 			// Entrance_Sorting
 			// 
@@ -120,12 +121,12 @@
 			// 
 			// AlgLab
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(798, 540);
 			this.Controls.Add(this.Entrance_Backpack);
 			this.Controls.Add(this.Entrance_Sorting);
-			this.Controls.Add(this.Btn4);
+			this.Controls.Add(this.Entrance_Matrix);
 			this.Controls.Add(this.Btn5);
 			this.Controls.Add(this.Btn6);
 			this.Controls.Add(this.Title);
@@ -148,7 +149,7 @@
 		private System.Windows.Forms.Label Title;
 		private System.Windows.Forms.Button Btn6;
 		private System.Windows.Forms.Button Btn5;
-		private System.Windows.Forms.Button Btn4;
+		private System.Windows.Forms.Button Entrance_Matrix;
 		private System.Windows.Forms.Button Entrance_Sorting;
 		private System.Windows.Forms.Button Entrance_Backpack;
 	}
